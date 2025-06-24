@@ -1,8 +1,8 @@
 
 # ✅*Machine Learning Engineer Roadmap*
 
-````markdown
-# 🚀 Machine Learning Engineer Roadmap (Débutant → Avancé)
+
+## 🚀 Machine Learning Engineer Roadmap (Débutant → Avancé)
 
 Bienvenue dans ce dépôt de référence destiné à toute personne souhaitant devenir **Machine Learning Engineer**, en partant **de zéro** jusqu’à un **niveau avancé**.
 
@@ -24,7 +24,6 @@ aux désirés embrasser une carrière d'Ingénieur en Machine Learning.
 
 Le dépôt est divisé en **niveaux de difficulté**, chacun structuré en modules :
 
-```plaintext
 📂 niveau_debutant/
    ├── 01_structures_donnees/
    ├── 02_Base_Programmation_Python/
@@ -62,7 +61,6 @@ Le dépôt est divisé en **niveaux de difficulté**, chacun structuré en modul
    ├── articles/
    ├── cours/
    └── liens_utiles.md
-````
 
 ---
 
@@ -136,8 +134,8 @@ Tu es libre de l'utiliser, le modifier et le partager.
 
 Si ce repo t’aide, pense à laisser une ⭐ pour soutenir ce travail et le rendre plus visible à d’autres !
 
-```
 
 ---
 ## 📝 Notes
 
+Ce dépôt est en constante évolution. N'hésite pas à revenir régulièrement pour découvrir de nouveaux modules, ressources et projets.
