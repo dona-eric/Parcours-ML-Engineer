@@ -23,7 +23,7 @@ aux désirés embrasser une carrière d'Ingénieur en Machine Learning.
 ## 📚 Organisation du contenu
 
 Le dépôt est divisé en **niveaux de difficulté**, chacun structuré en modules :
-
+```
 📂 niveau_debutant/
    ├── 01_structures_donnees/
    ├── 02_Base_Programmation_Python/
@@ -61,7 +61,7 @@ Le dépôt est divisé en **niveaux de difficulté**, chacun structuré en modul
    ├── articles/
    ├── cours/
    └── liens_utiles.md
-
+```
 ---
 
 ## 🛠 Technologies abordées
