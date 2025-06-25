@@ -1,0 +1,115 @@
+            A** """Apprendre  à exécuter des commandes Docker"""
+
+C'est un guide pour apprendre à exécuter des commandes Docker de base. 
+Il est conçu pour les débutants qui souhaitent se familiariser avec Docker.
+
+# Introduction à Docker
+Docker est une plateforme de conteneurisation qui permet de créer, déployer et exécuter des applications dans des conteneurs. 
+Un conteneur est une unité standard de logiciel qui regroupe le code et toutes ses dépendances pour que l'application 
+    puisse s'exécuter rapidement et de manière fiable dans différents environnements informatiques.
+
+# Installation de Docker
+Avant de pouvoir exécuter des commandes Docker, vous devez installer Docker sur votre système.
+Vous pouvez télécharger Docker Desktop pour Windows ou Mac, ou installer Docker Engine sur Linux.
+Pour les instructions d'installation, consultez la [documentation officielle de Docker](https://docs.docker.com/get-docker/).
+
+# Exécution de commandes Docker
+Une fois Docker installé, vous pouvez commencer à exécuter des commandes Docker dans votre terminal ou
+    votre invite de commande. Voici quelques commandes de base pour vous aider à démarrer :
+
+## Vérifier l'installation de Docker
+Pour vérifier que Docker est installé correctement, exécutez la commande suivante :
+```bash
+docker --version
+```
+Cette commande affichera la version de Docker installée sur votre système.
+## Exécuter un conteneur Docker
+Pour exécuter un conteneur Docker, vous pouvez utiliser la commande `docker run`.
+Par exemple, pour exécuter un conteneur basé sur l'image `hello-world`, utilisez la commande suivante :
+```bash
+docker run hello-world
+```
+Cette commande téléchargera l'image `hello-world` depuis Docker Hub (si elle n'est pas déjà présente sur votre système)
+et exécutera le conteneur, affichant un message de bienvenue.
+## Lister les conteneurs en cours d'exécution
+Pour lister les conteneurs en cours d'exécution, utilisez la commande suivante :
+```bash
+docker ps
+```
+Cette commande affichera une liste des conteneurs actifs, y compris leur ID, leur nom, et d'autres informations pertinentes.
+Si vous souhaitez voir tous les conteneurs, y compris ceux qui ne sont pas en cours d'exécution, utilisez :
+```bash
+docker ps -a
+```
+## Arrêter un conteneur
+Pour arrêter un conteneur en cours d'exécution, utilisez la commande `docker stop` suivie de l'ID ou du nom du conteneur.
+Par exemple, pour arrêter un conteneur avec l'ID `abc123`, utilisez la commande suivante :
+```bash
+docker stop abc123
+```
+Vous pouvez également utiliser le nom du conteneur à la place de l'ID.
+## Supprimer un conteneur
+Pour supprimer un conteneur, utilisez la commande `docker rm` suivie de l'ID ou du nom du conteneur.
+Par exemple, pour supprimer un conteneur avec l'ID `abc123`, utilisez la commande suivante :
+```bash
+docker rm abc123
+```
+Assurez-vous que le conteneur est arrêté avant de le supprimer.
+## Lister les images Docker
+Pour lister les images Docker présentes sur votre système, utilisez la commande suivante :
+```bash
+docker images
+```
+Cette commande affichera une liste des images disponibles, y compris leur nom, leur tag et leur ID.
+## Supprimer une image Docker
+Pour supprimer une image Docker, utilisez la commande `docker rmi` suivie de l'ID ou du nom de l'image.
+Par exemple, pour supprimer une image avec l'ID `abc123`, utilisez la commande suivante :
+```bash
+docker rmi abc123
+```
+Assurez-vous que l'image n'est pas utilisée par un conteneur actif avant de la supprimer.
+
+## Pour exécuter une image docker en  arrière-plan
+Pour exécuter une image Docker en arrière-plan (mode détaché), utilisez l'option `-d` avec la commande `docker run`.
+Par exemple, pour exécuter un conteneur basé sur l'image `nginx` en arrière-plan, utilisez la commande suivante :
+```bash
+docker run -d postgres (par exemple)
+
+
+## Pour retirer un conteneur
+Pour retirer un conteneur, vous pouvez utiliser la commande `docker rm` suivie de l'ID ou du nom du conteneur.
+Par exemple, pour retirer un conteneur avec l'ID `abc123`, utilisez la commande suivante :
+```bash
+docker rm abc123
+```
+                    B* """Gestion des images docker locales""""
+
+commande pour recupérer les images docker locales
+Pour lister les images Docker locales, utilisez la commande suivante :
+```bash
+docker images
+```
+Cette commande affichera une liste des images disponibles sur votre système, y compris leur nom, leur
+tag et leur ID.
+
+## commande pour recupérer l'image docker ubuntu 22.04
+Pour récupérer l'image Docker Ubuntu 22.04, utilisez la commande suivante :
+```bash
+docker pull ubuntu:22.04
+```
+Cette commande téléchargera l'image Ubuntu 22.04 depuis Docker Hub et l'ajoutera à votre liste d'images locales.
+Vous pouvez vérifier que l'image a été téléchargée en exécutant à nouveau la commande `docker images`.
+
+## Pour exécuter un conteneur basé sur l'image Ubuntu 22.04
+Pour exécuter un conteneur basé sur l'image Ubuntu 22.04, utilisez la commande suivante :
+```bash
+docker run -it ubuntu:22.04
+```
+L'option `-it` permet d'exécuter le conteneur en mode interactif, vous donnant accès à un terminal à l'intérieur du conteneur.
+Vous pouvez maintenant exécuter des commandes à l'intérieur du conteneur Ubuntu 22.04.
+
+## pour supprimer tous les conteneurs arrêtés
+Pour supprimer tous les conteneurs arrêtés, vous pouvez utiliser la commande suivante :
+```bash
+docker container prune
+```

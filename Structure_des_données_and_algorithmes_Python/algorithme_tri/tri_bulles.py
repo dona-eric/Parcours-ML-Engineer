@@ -24,4 +24,24 @@ def bubble_sort(arr):
             break
     return arr
 ```
+Implémentation de l'algorithme de tri à bulles en Python.
 """
+
+def bubbles_algo(my_list):
+    # the length of liste
+    length_liste = len(my_list)
+    is_sorted = False
+    while not is_sorted:
+        is_sorted = True
+        for i in range(length_liste - 1):
+            # Compare adjacent elements
+            if my_list[i] > my_list[i + 1]:
+                # Swap if they are in the wrong order
+                my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
+                is_sorted = False
+
+            length_liste -= 1
+    return my_list
+
+my_list=[12, 2,3, 8, 5, 6, 7, 1, 4, 9, 10, 11, 100]
+print(bubbles_algo(my_list))
