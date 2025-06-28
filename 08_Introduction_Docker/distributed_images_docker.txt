@@ -1,0 +1,12 @@
+    """ distributed images docker """
+
+Pour run distributed images with docker, you can use the following command:
+```bash
+docker run -d --name distributed_images \
+  -p 8080:8080 \
+  -v /path/to/local/images:/app/images \
+  distributed_images_image
+``` 
+This command will run the `distributed_images_image` container in detached mode (`-d`), map port 8080 of the host to port 8080 of the container, 
+and mount a local directory containing images to `/app/images` in the container. Make sure to replace `/path/to/local/images` with the actual path to your images on the host machine.
+
