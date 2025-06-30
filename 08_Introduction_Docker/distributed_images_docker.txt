@@ -24,8 +24,7 @@ Docker Compose: Outil permettant de définir et de gérer des applications multi
 Volumes Docker: Mécanisme de persistance des données générées et utilisées par les conteneurs Docker, indépendamment du cycle de vie du conteneur.
 Réseaux Docker: Systèmes qui permettent la communication entre les conteneurs Docker et avec le monde extérieur, offrant isolation et sécurité.
  
-08_Introduction_Docker/moteurDocker.png
-
+https://github.com/dona-eric/Parcours-ML-Engineer/blob/main/08_Introduction_Docker/moteurDocker.png
 Cette architecture modulaire permet de créer des environnements d’application cohérents, portables et isolés qui peuvent être déployés rapidement sur n’importe quelle plateforme supportant Docker.
 
  
