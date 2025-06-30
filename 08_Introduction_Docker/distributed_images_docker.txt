@@ -9,4 +9,146 @@ docker run -d --name distributed_images \
 ``` 
 This command will run the `distributed_images_image` container in detached mode (`-d`), map port 8080 of the host to port 8080 of the container, 
 and mount a local directory containing images to `/app/images` in the container. Make sure to replace `/path/to/local/images` with the actual path to your images on the host machine.
+------
 
+"""Architecture docker"""
+
+
+L’architecture Docker repose sur plusieurs composants clés qui fonctionnent ensemble pour créer un environnement de conteneurisation efficace :
+
+Moteur Docker: Le cœur de la plateforme qui permet de créer et gérer les conteneurs.
+Images Docker: Templates en lecture seule qui contiennent le code source, les bibliothèques, les dépendances, les outils et autres fichiers nécessaires pour exécuter une application.
+Conteneurs Docker: Instances en cours d’exécution d’une image Docker. Ils encapsulent une application et son environnement d’exécution de manière isolée.
+Registres Docker: Services de stockage et de distribution d’images Docker. Docker Hub est le registre public par défaut, mais il existe également des registres privés.
+Docker Compose: Outil permettant de définir et de gérer des applications multi-conteneurs à l’aide d’un fichier YAML pour configurer les services, les réseaux et les volumes.
+Volumes Docker: Mécanisme de persistance des données générées et utilisées par les conteneurs Docker, indépendamment du cycle de vie du conteneur.
+Réseaux Docker: Systèmes qui permettent la communication entre les conteneurs Docker et avec le monde extérieur, offrant isolation et sécurité.
+ 
+08_Introduction_Docker/moteurDocker.png
+
+Cette architecture modulaire permet de créer des environnements d’application cohérents, portables et isolés qui peuvent être déployés rapidement sur n’importe quelle plateforme supportant Docker.
+
+ 
+
+### Le moteur Docker
+Le moteur Docker (Docker Engine) est le composant central de la technologie Docker et se compose de trois éléments principaux qui travaillent ensemble :
+
+### Daemon Docker (dockerd): C’est le processus serveur qui s’exécute en arrière-plan sur le système hôte. Il est responsable de la création, de l’exécution et de la supervision des conteneurs Docker. Le daemon gère également les images, les volumes, les réseaux et autres ressources Docker.
+### API REST: Interface de programmation qui permet aux applications de communiquer avec le daemon Docker. Cette API sert de couche intermédiaire entre le daemon et les clients, permettant aux développeurs d’interagir à l’aide de scripts avec Docker et d’automatiser les processus.
+### Interface en ligne de commande (CLI): Outil client (docker) qui permet aux utilisateurs d’interagir avec Docker via des commandes textuelles. La CLI envoie des instructions au daemon Docker via l’API REST, offrant ainsi un moyen simple et direct de gérer les conteneurs, les images et autres ressources Docker.
+ 
+
+Cette architecture à trois niveaux offre flexibilité et extensibilité, permettant à Docker d’être utilisé aussi bien via des commandes manuelles que par des scripts d’automatisation ou des plateformes d’orchestration.
+
+
+
+## Le démon (daemon) Docker
+Le daemon Docker (dockerd) est un composant fondamental de l’architecture Docker qui fonctionne comme un service persistant en arrière-plan sur le système hôte. Ses fonctions principales sont :
+
+## Gestion du cycle de vie des conteneurs
+Le daemon Docker orchestre l’ensemble du cycle de vie des conteneurs, depuis leur création jusqu’à leur suppression. Il s’occupe de démarrer les conteneurs, de surveiller leur état pendant leur exécution et de les arrêter proprement lorsque nécessaire. Cette gestion précise permet d’assurer la stabilité et la fiabilité des applications conteneurisées.
+
+## Gestion des images Docker
+Le daemon prend en charge toutes les opérations liées aux images. Il télécharge les images depuis les registres distants, construit de nouvelles images à partir des instructions définies dans les Dockerfiles, et maintient un cache local pour optimiser les performances. Cette gestion efficace des images facilite le déploiement rapide des applications.
+
+## Gestion des volumes et des réseaux
+Pour assurer la persistance des données et la communication entre conteneurs, le daemon Docker gère la création et la configuration des volumes de stockage ainsi que l’établissement des réseaux virtuels. Il veille à ce que les conteneurs puissent accéder aux données nécessaires et communiquer entre eux de manière sécurisée et efficace.
+
+## Exposition d’une API REST
+Le daemon expose une interface API REST complète qui sert de point d’entrée pour toutes les interactions avec Docker. Cette API permet non seulement à la CLI Docker de communiquer avec le daemon, mais aussi à des outils tiers et des plateformes d’orchestration de s’intégrer facilement à l’écosystème Docker. Le daemon écoute attentivement les requêtes API et gère les objets Docker comme les images, les conteneurs, les réseaux et les volumes en conséquence.
+08_Introduction_Docker/clientDocker.png
+
+## Le client Docker
+Le client Docker est l’interface en ligne de commande (CLI) qui permet aux utilisateurs d’interagir facilement avec l’écosystème Docker.
+
+#     """" Caractéristiques principales""""":
+
+### Envoie des commandes au daemon Docker
+
+Le client Docker sert de pont entre l’utilisateur et le daemon Docker. Il peut communiquer avec un daemon s’exécutant :
+
+    Localement : sur la même machine que le client, ce qui est le cas d’utilisation le plus courant.
+    À distance : sur un serveur distant, permettant ainsi la gestion centralisée de plusieurs environnements Docker.
+ 
+
+Traduit les commandes utilisateur en appels API REST
+
+Lorsqu’un utilisateur saisit une commande Docker (docker run par exemple), le client la convertit en requêtes API REST appropriées qui sont ensuite transmises au daemon. Cette traduction transparente simplifie considérablement l’interaction avec la technologie Docker, rendant accessible une technologie complexe à travers des commandes intuitives.
+
+ 
+
+Commandes principales
+
+Il existe de nombreuses commandes Docker que nous découvrirons progressivement tout au long de ce cours. Voici quelques exemples parmi les plus couramment utilisées:
+
+- docker container run ou docker run (alias) : Crée et démarre un nouveau conteneur à partir d’une image spécifiée. Elle permet également de configurer plusieurs aspects du conteneur, comme les ports, les volumes ou les variables d’environnement.
+- docker buildx build ou docker image build (alias) ou docker build (alias): Construit une image Docker à partir d’un Dockerfile et d’un contexte. Cette commande est indispensable pour créer des environnements personnalisés adaptés aux besoins des applications.
+- docker image pull ou docker pull (alias) : Télécharge une image depuis un registre Docker (comme Docker Hub). Elle permet d’accéder rapidement à un large catalogue d’images préconçues.
+- docker image push ou docker push : Envoie une image locale vers un registre Docker.
+Très utile pour partager et déployer ses propres images dans différents environnements.
+- docker container ls ou docker ps (alias) : Affiche la liste des conteneurs en cours d’exécution. Elle offre une vue d’ensemble instantanée de l’état du système et des conteneurs actifs.
+
+
+La plupart des commandes Docker possèdent des alias, qui sont des versions abrégées. Ces alias sont souvent privilégiés car ils sont plus courts, plus rapides à taper et plus faciles à mémoriser.
+
+ 
+
+Les registres Docker
+Les registres Docker fonctionnent comme des dépôts centralisés où les images Docker peuvent être stockées, versionnées et partagées. Ils permettent aux équipes de développement de maintenir un catalogue organisé d’images prêtes à l’emploi, facilitant ainsi le déploiement cohérent des applications à travers différents environnements. Ces registres peuvent être publics ou privés.
+
+ 
+
+Registres publics
+
+Les registres publics sont accessibles à tous les utilisateurs sans restriction d’accès pour le téléchargement des images. Ils servent de plateformes de partage pour la communauté et offrent généralement :
+
+ Un large éventail d’images préconçues et prêtes à l’emploi
+Une documentation associée aux images
+Des mécanismes de notation et de commentaires pour évaluer la qualité des images
+Une grande visibilité pour les projets open source
+ 
+
+Registres privés
+
+Les registres privés quant à eux offrent un contrôle d’accès strict et sont généralement utilisés par les entreprises pour :
+
+Protéger la propriété intellectuelle contenue dans les images
+Limiter l’accès aux images contenant des informations sensibles
+Garantir la provenance et l’intégrité des images utilisées en production
+Respecter les exigences de conformité et de sécurité
+ 
+08_Introduction_Docker/registreDocker.png
+#### Exemples de registres
+
+1--- Docker Hub
+
+Docker Hub est le registre public officiel et le plus populaire, proposant des milliers d’images préconçues, avec options de stockage privé en version payante.
+
+Registres privés
+
+Amazon ECR (Elastic Container Registry) : Service de registre géré par AWS.
+Azure Container Registry : Solution proposée par Microsoft pour l’environnement Azure.
+Google Container Registry : Service intégré à Google Cloud Platform.
+Harbor : Registre open source, déployable en local ou sur site.
+
+
+
+Architecture Docker
+L’architecture Docker repose sur une structure bien définie qui permet la création et la gestion efficace des conteneurs. Voici comment les différents composants s’articulent :
+
+Composants de l’architecture Docker
+
+Le système hôte
+L’hôte Docker héberge l’ensemble de l’infrastructure Docker. Cet hôte peut être une machine physique ou virtuelle exécutant Linux, Windows ou macOS.
+Le daemon Docker (dockerd)
+Le daemon Docker s’exécute en arrière-plan sur l’hôte. Ce service persistant est le cœur du système Docker et gère tous les objets Docker : conteneurs, images, volumes et réseaux.
+L’interface en ligne de commande (CLI Docker)
+La CLI permet aux utilisateurs d’interagir avec Docker. Lorsqu’un utilisateur saisit une commande Docker, celle-ci est transmise au daemon via l’API REST.
+Les registres Docker
+Le daemon Docker peut récupérer des images depuis des registres Docker (comme Docker Hub ou des registres privés comme Amazon ECR). Ces registres servent de dépôts centralisés pour stocker et distribuer les images Docker.
+ 
+
+Les conteneurs
+Une fois les images téléchargées localement, le daemon Docker peut instancier des conteneurs à partir de ces images. Chaque conteneur est une instance en cours d’exécution d’une image, avec son propre système de fichiers, son espace de processus et son réseau isolés.
+
+08_Introduction_Docker/archiDocker.png
